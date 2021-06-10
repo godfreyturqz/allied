@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Banner from '../components/Banner'
 import { TableContainer } from '../components/Table/TableStyles'
 import Table from '../components/Table/Table'
+import { ApiRequest } from '../utils/ApiRequest'
 
 // dev
 import mockdata from '../lib/mockdata.json'
@@ -16,11 +17,13 @@ const ReqIndex: React.FC = () => {
 
     useEffect(() => {
 
+        const data = new ApiRequest('GET').reqIndex()
+
         mockdata.map(obj => setFetchedData(prev => [...prev, obj]))
 
     }, [])
 
-
+    
     return (
         <>
             <Banner size='medium'>

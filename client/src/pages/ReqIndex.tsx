@@ -3,7 +3,6 @@ import Banner from '../components/Banner'
 import { TableContainer } from '../components/Table/TableStyles'
 import Table from '../components/Table/Table'
 import { ApiRequest } from '../utils/ApiRequest'
-
 // dev
 import mockdata from '../lib/mockdata.json'
 
@@ -15,9 +14,13 @@ const ReqIndex: React.FC = () => {
     const theadData = ['Request - Line', 'Description, Tags']
     const tbodyData = fetchedData
 
-    useEffect(() => {
+    // eslint-disable-next-line
+    const getReqIndex = async () => {
+        const { data } = await new ApiRequest('GET').reqIndex()
+        return data
+    }
 
-        const data = new ApiRequest('GET').reqIndex()
+    useEffect(() => {
 
         mockdata.map(obj => setFetchedData(prev => [...prev, obj]))
 

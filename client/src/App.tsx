@@ -1,12 +1,24 @@
-import React from 'react'
+import React, { lazy, Suspense } from 'react'
 import './styles/globals.css'
-import ReqIndex from './pages/ReqIndex'
+import { AppContainer } from './styles/AppStyle'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import * as ROUTE from './lib/routeConstant'
+const ReqIndex = lazy(() => import('./pages/ReqIndex'))
+const ReqIndexNew = lazy(() => import('./pages/ReqIndexNew'))
+
 
 const App: React.FC = () => {
   return (
-    <div>
-      <ReqIndex/>
-    </div>
+    <AppContainer>
+      <Suspense fallback={'loading'}>
+        <BrowserRouter>
+          <Switch>
+            <Route path={ROUTE.REQ_INDEX} component={ReqIndex} exact/>
+            <Route path={ROUTE.REQ_INDEX_NEW} component={ReqIndexNew} exact/>
+          </Switch>
+        </BrowserRouter>
+      </Suspense>
+    </AppContainer>
   )
 }
 

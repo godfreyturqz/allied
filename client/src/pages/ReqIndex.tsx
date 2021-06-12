@@ -3,6 +3,9 @@ import Banner from '../components/Banner'
 import { TableContainer } from '../components/Table/TableStyles'
 import Table from '../components/Table/Table'
 import { useReqIndex } from '../hooks/useReqIndex'
+import Button from '../components/Button'
+import { Link } from 'react-router-dom'
+import * as ROUTE from '../lib/routeConstant'
 
 
 const ReqIndex: React.FC = () => {
@@ -16,7 +19,8 @@ const ReqIndex: React.FC = () => {
     useEffect(() => {
 
         getReqIndex()
-
+        
+    // eslint-disable-next-line
     }, [])
     
 
@@ -24,6 +28,13 @@ const ReqIndex: React.FC = () => {
         <>
             <Banner size='medium'>
                 <p>Request Index</p>
+                <div>
+                    <Link to={ROUTE.REQ_INDEX_NEW}>
+                        <Button secondary>
+                            Add
+                        </Button>
+                    </Link>
+                </div>
             </Banner>
             <TableContainer>
                 <Table 

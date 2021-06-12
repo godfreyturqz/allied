@@ -26,15 +26,17 @@ const StyledBanner = styled.div`
     width: 100%;
     background: linear-gradient(to right, #1b2330 0%, #252f3e 100%);
 
+    padding: 0px 3%;
+
+    display: flex;
+    align-items: center;
+
     p {
         color: var(--white);
         font-size: 2rem;
         font-weight: 600;
 
-        height: 100%;
-        display: flex;
-        align-items: center;
-        padding-left: 7rem;
+        margin-right: auto;
 
         -webkit-user-select: none;
         -moz-user-select: none;

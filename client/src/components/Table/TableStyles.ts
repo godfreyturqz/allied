@@ -13,7 +13,6 @@ export const TableContainer = styled.div`
 
 export const Table = styled.table`
     border-radius: 16px 16px 0px 0px;
-    max-width: 1000px;
     background: var(--white);
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 

@@ -72,6 +72,8 @@ export const TableRow = styled.tr`
         height: 4rem;
         font-size: 0.9rem;
         max-width: 200px;
+
+        
     }
 
     th {

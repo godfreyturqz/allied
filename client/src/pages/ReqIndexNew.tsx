@@ -7,7 +7,7 @@ import { FormContainer } from '../components/Form/FormStyles'
 
 const ReqIndexNew: React.FC = () => {
 
-    const { formData, handleInputChange } = useForm()
+    const { formData, handleInputChange, handleFormSubmit } = useForm()
 
     return (
         <div>
@@ -15,7 +15,7 @@ const ReqIndexNew: React.FC = () => {
                 <p>New Request Index</p>
             </Banner>
             <FormContainer>
-                <form>
+                <form onSubmit={(e) => handleFormSubmit(e, formData)}>
                     <header>
                         New 
                     </header>

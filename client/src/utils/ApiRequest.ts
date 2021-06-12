@@ -3,12 +3,7 @@ import axios, { AxiosRequestConfig, Method } from 'axios'
 // for dev
 const isLocalServer = true
 
-// type APIResponse = {
-//     data: object[]
-//     map: (obj: object) => object[]
-// }
-
-interface APIResponse {
+type APIResponse = {
     data: object[]
     map: (obj: object) => object[]
 }
@@ -35,7 +30,6 @@ export class ApiRequest {
             data: this.objectData
         }
         const response = axios.request<APIResponse>(config)
-        // const response = axios.request(config)
 
         return response
     }

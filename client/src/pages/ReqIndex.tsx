@@ -13,7 +13,7 @@ const ReqIndex: React.FC = () => {
     const { fetchedData, getReqIndex } = useReqIndex()
 
     // configure to change table header
-    const theadData = ['Request - Line', 'Description, Tags']
+    const theadData = ['', 'Request - Line', 'Description, Tags', '']
     const tbodyData = fetchedData
 
     useEffect(() => {

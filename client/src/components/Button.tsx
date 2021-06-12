@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FormEvent, MouseEvent } from 'react'
 import styled from 'styled-components'
 
 interface StyledButtonProps {
@@ -33,7 +33,7 @@ const StyledButton = styled.button<StyledButtonProps>`
 
 interface ButtonProps {
     children: string
-    onClick?: () => void
+    onClick?: (e: FormEvent<HTMLFormElement> | MouseEvent<HTMLButtonElement>) => void
     primary?: boolean
     secondary?: boolean
 }

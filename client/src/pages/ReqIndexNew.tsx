@@ -10,7 +10,7 @@ const ReqIndexNew: React.FC = () => {
     const { formData, handleInputChange, handleFormSubmit } = useForm()
 
     return (
-        <div>
+        <>
             <Banner size='medium'>
                 <p>New Request Index</p>
             </Banner>
@@ -42,8 +42,7 @@ const ReqIndexNew: React.FC = () => {
                     </div>
                 </form>
             </FormContainer>
-            
-        </div>
+        </>
     )
 }
 

@@ -28,13 +28,11 @@ const ReqIndex: React.FC = () => {
         <>
             <Banner size='medium'>
                 <p>Request Index</p>
-                <div>
-                    <Link to={ROUTE.REQ_INDEX_NEW}>
-                        <Button secondary>
-                            Add
-                        </Button>
-                    </Link>
-                </div>
+                <Link to={ROUTE.REQ_INDEX_NEW}>
+                    <Button secondary>
+                        Add
+                    </Button>
+                </Link>
             </Banner>
             <TableContainer>
                 <Table 

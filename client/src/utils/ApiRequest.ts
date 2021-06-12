@@ -3,6 +3,16 @@ import axios, { AxiosRequestConfig, Method } from 'axios'
 // for dev
 const isLocalServer = true
 
+// type APIResponse = {
+//     data: object[]
+//     map: (obj: object) => object[]
+// }
+
+interface APIResponse {
+    data: object[]
+    map: (obj: object) => object[]
+}
+
 export class ApiRequest {
 
     API_BASE_URL: string
@@ -24,13 +34,10 @@ export class ApiRequest {
             method: this.httpReqMethod,
             data: this.objectData
         }
+        const response = axios.request<APIResponse>(config)
+        // const response = axios.request(config)
 
-        try {
-            const response = axios(config)
-            return response
-        } catch (error) {
-            throw Error(error)
-        }
+        return response
     }
 
 }

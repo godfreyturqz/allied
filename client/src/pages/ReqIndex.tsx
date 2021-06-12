@@ -1,32 +1,25 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import Banner from '../components/Banner'
 import { TableContainer } from '../components/Table/TableStyles'
 import Table from '../components/Table/Table'
-import { ApiRequest } from '../utils/ApiRequest'
-// dev
-import mockdata from '../lib/mockdata.json'
+import { useReqIndex } from '../hooks/useReqIndex'
 
 
 const ReqIndex: React.FC = () => {
 
-    const [fetchedData, setFetchedData] = useState<object[]>([])
+    const { fetchedData, getReqIndex } = useReqIndex()
 
+    // configure to change table header
     const theadData = ['Request - Line', 'Description, Tags']
     const tbodyData = fetchedData
 
-    // eslint-disable-next-line
-    const getReqIndex = async () => {
-        const { data } = await new ApiRequest('GET').reqIndex()
-        return data
-    }
-
     useEffect(() => {
 
-        mockdata.map(obj => setFetchedData(prev => [...prev, obj]))
+        getReqIndex()
 
     }, [])
-
     
+
     return (
         <>
             <Banner size='medium'>

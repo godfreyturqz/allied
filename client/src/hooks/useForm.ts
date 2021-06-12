@@ -1,12 +1,20 @@
 import { useState, ChangeEvent, FormEvent, MouseEvent } from 'react'
 import { useReqIndex } from './useReqIndex'
+import { useHistory } from 'react-router-dom'
 
 interface ReqIndex {
     reqLine: string
     description: string
 }
 
-export const useForm = (initialState = { reqLine: '', description: '' }) => {
+const initial = {
+    reqLine: '',
+    description: ''
+}
+
+export const useForm = (initialState= initial) => {
+
+    const history = useHistory()
 
     const [formData, setFormData] = useState<ReqIndex>(initialState)
     const { addReqIndex } = useReqIndex()
@@ -23,6 +31,8 @@ export const useForm = (initialState = { reqLine: '', description: '' }) => {
         if(!formData.reqLine || !formData.description) return console.log('Fill up the required fields.')
         // if(Object.values(formData).every(x => x === null || x === '') || formData === {}) return console.log('Fill up the required fields.')
         addReqIndex(formData)
+        setFormData(initial)
+        history.push('/')
     }
 
 

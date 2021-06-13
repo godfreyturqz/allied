@@ -20,6 +20,10 @@ export const FormContainer = styled.div`
 
         .input-group {
             padding: 18px;
+
+            span {
+                margin-right: 12px;
+            }
         }
     }
 `

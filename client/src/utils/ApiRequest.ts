@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig, Method } from 'axios'
 
 // for dev
-const isProduction = false
+const isProductionServer = true
 
 type APIResponse = {
     data: object[]
@@ -16,7 +16,7 @@ export class ApiRequest {
     objectData: object
 
     constructor(httpReqMethod: Method, id: string = '', objectData: object = {}){
-        this.API_BASE_URL = isProduction ? 'https://gt-allied.herokuapp.com/api/v1' : 'http://localhost:5000/api/v1'
+        this.API_BASE_URL = isProductionServer ? 'https://gt-allied.herokuapp.com/api/v1' : 'http://localhost:5000/api/v1'
         this.httpReqMethod = httpReqMethod
         this.id = id
         this.objectData = objectData

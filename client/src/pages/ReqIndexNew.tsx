@@ -4,6 +4,8 @@ import Input from '../components/Input'
 import Banner from '../components/Banner'
 import Button from '../components/Button'
 import { FormContainer } from '../components/Form/FormStyles'
+import { Link } from 'react-router-dom'
+import * as ROUTE from '../lib/routeConstant'
 
 const ReqIndexNew: React.FC = () => {
 
@@ -36,9 +38,19 @@ const ReqIndexNew: React.FC = () => {
                             placeholder='Add details or tags'
                         />
                         <br />
-                        <Button secondary>
-                            Add
-                        </Button>
+                        <span>
+                            <Button primary>
+                                Add
+                            </Button>
+
+                        </span>
+                        <span>
+                            <Link to={ROUTE.REQ_INDEX}>
+                                <Button primary>
+                                    Back
+                                </Button>
+                            </Link>
+                        </span>
                     </div>
                 </form>
             </FormContainer>

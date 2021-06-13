@@ -16,6 +16,11 @@ export const Table = styled.table`
     background: var(--white);
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
     thead {
         display: table;
         width: 100%;

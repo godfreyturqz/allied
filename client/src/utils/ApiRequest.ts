@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig, Method } from 'axios'
 
 // for dev
-const isProduction = true
+const isProduction = false
 
 type APIResponse = {
     data: object[]

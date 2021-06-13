@@ -5,11 +5,9 @@
   "scripts": {
     "start": "node server.js",
     "dev": "concurrently \"yarn start-server\" \"yarn start-client\"",
-    "start-server": "nodemon server.js",
-    "start-client": "cd client && yarn start",
-    "build": "cd client && yarn build",
-    "install-client": "cd client && yarn install",
-    "heroku-postbuild": "yarn install-client && yarn build"
+    "server": "nodemon server.js",
+    "client": "cd client && yarn start",
+    "install-client": "cd client && yarn install"
   },
   "license": "MIT",
   "dependencies": {

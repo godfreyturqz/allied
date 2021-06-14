@@ -3,10 +3,10 @@ import axios, { AxiosRequestConfig, Method } from 'axios'
 // for dev
 const isProductionServer = true
 
-type APIResponse = {
-    data: object[]
-    map: (obj: object) => object[]
-}
+// type APIResponse = {
+//     data: object[]
+//     map: (obj: object) => object[]
+// }
 
 export class ApiRequest {
 
@@ -29,7 +29,7 @@ export class ApiRequest {
             method: this.httpReqMethod,
             data: this.objectData
         }
-        const response = axios.request<APIResponse>(config)
+        const response = axios.request(config)
 
         return response
     }

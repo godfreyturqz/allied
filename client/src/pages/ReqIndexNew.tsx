@@ -15,6 +15,11 @@ const ReqIndexNew: React.FC = () => {
         <>
             <Banner size='medium'>
                 <p>New Request Index</p>
+                <Link to={ROUTE.REQ_INDEX}>
+                    <Button secondary>
+                        Back
+                    </Button>
+                </Link>
             </Banner>
             <FormContainer>
                 <form onSubmit={(e) => handleFormSubmit(e, formData)}>
@@ -42,7 +47,6 @@ const ReqIndexNew: React.FC = () => {
                             <Button primary>
                                 Add
                             </Button>
-
                         </span>
                         <span>
                             <Link to={ROUTE.REQ_INDEX}>

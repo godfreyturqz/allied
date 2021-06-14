@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
+// import React, { useState, useEffect } from 'react'
 import Backdrop from '@material-ui/core/Backdrop'
 import CircularProgress from '@material-ui/core/CircularProgress';
 
@@ -11,7 +12,7 @@ const BackdropIcon: React.FC<BackdropIconProps> = ({
     open
 }) => {
 
-    const [show, setShow] = useState<boolean>(true)
+    // const [show, setShow] = useState<boolean>(true)
 
     // useEffect(() => {
 
@@ -25,11 +26,14 @@ const BackdropIcon: React.FC<BackdropIconProps> = ({
 
     return (
         <>
-            { show &&
+            {/* { show &&
                 <Backdrop open={open}>
                     <CircularProgress />
                 </Backdrop>
-            }
+            } */}
+            <Backdrop open={open}>
+                <CircularProgress />
+            </Backdrop>
         </>
     )
 }

@@ -30,9 +30,17 @@ export const useForm = (initialState= initial) => {
         e.preventDefault()
         if(!formData.reqLine || !formData.description) return console.log('Fill up the required fields.')
         // if(Object.values(formData).every(x => x === null || x === '') || formData === {}) return console.log('Fill up the required fields.')
-        addReqIndex(formData)
-        setFormData(initial)
-        history.push('/')
+
+        const submit = () => {
+            return new Promise((resolve, reject) => {
+                const response = addReqIndex(formData)
+                resolve(response)
+            })
+        }
+        submit()
+        .then(() => setFormData(initial))
+        .then(() => history.push('/'))
+        
     }
 
 

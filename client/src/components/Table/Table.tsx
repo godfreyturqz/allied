@@ -37,7 +37,7 @@ const Table: React.FC<TableProps> = ({
                     tbodyData && tbodyData.map(obj => 
                         <TableRow>
                             {
-                                Object.entries(obj).map(([key, value]) => <td>{key !== 'id' && value}</td>)
+                                Object.entries(obj).map(([key, value]) => <td>{key === 'id' ? '' : value}</td>)
                             }
                             <td>
                                 <ButtonIcon onClick={() => deleteReqIndex(obj.id)}>

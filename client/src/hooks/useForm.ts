@@ -2,7 +2,7 @@ import { useState, ChangeEvent, FormEvent, MouseEvent } from 'react'
 import { useReqIndex } from './useReqIndex'
 import { useHistory } from 'react-router-dom'
 
-interface ReqIndex {
+interface ReqIndexForm {
     reqLine: string
     description: string
 }
@@ -16,7 +16,7 @@ export const useForm = (initialState= initial) => {
 
     const history = useHistory()
 
-    const [formData, setFormData] = useState<ReqIndex>(initialState)
+    const [formData, setFormData] = useState<ReqIndexForm>(initialState)
     const { addReqIndex } = useReqIndex()
 
     const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -26,21 +26,20 @@ export const useForm = (initialState= initial) => {
         }))
     }
 
-    const handleFormSubmit = (e: FormEvent<HTMLFormElement> | MouseEvent<HTMLButtonElement>, formData: ReqIndex) => {
+    const handleFormSubmit = (e: FormEvent<HTMLFormElement> | MouseEvent<HTMLButtonElement>, formData: ReqIndexForm) => {
         e.preventDefault()
         if(!formData.reqLine || !formData.description) return console.log('Fill up the required fields.')
         // if(Object.values(formData).every(x => x === null || x === '') || formData === {}) return console.log('Fill up the required fields.')
 
-        const submit = () => {
-            return new Promise((resolve, reject) => {
-                const response = addReqIndex(formData)
-                resolve(response)
-            })
-        }
-        submit()
-        .then(() => setFormData(initial))
-        .then(() => history.push('/'))
-        
+        // new Promise((resolve, reject) => {
+        //     const response = addReqIndex(formData)
+        //     resolve(response)
+        // })
+        // .then(() => setFormData(initial))
+        // .then(() => history.push('/'))
+        addReqIndex(formData)
+        setFormData(initial)
+        history.push('/')
     }
 
 

@@ -85,7 +85,7 @@ export const TableRow = styled.tr`
 
     th:first-child, td:first-child {
         padding-left: 24px;
-        width: 100px;
+        width: 5%;
     }
 
     th:nth-child(2), td:nth-child(2) {
@@ -93,7 +93,7 @@ export const TableRow = styled.tr`
     }
 
     th:last-child, td:last-child {
-        width: 100px;
+        width: 10%;
     }
 `
 

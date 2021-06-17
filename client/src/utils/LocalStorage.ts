@@ -5,7 +5,7 @@ export class LocalStorage {
 
 	constructor(){
 		this.stateLocalKey = 'state'
-		this.maxAge = Date.now() + 86400000 // 1day
+		this.maxAge = Date.now() + 300000 // 5 mins
 	}
 
 	saveState(value: object[]){

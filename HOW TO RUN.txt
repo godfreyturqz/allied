@@ -1,0 +1,5 @@
+On the root folder:
+
+Type 'yarn client' to start frontend
+Type 'yarn server' to start backend
+Type 'yarn dev' to start both frontend and backend

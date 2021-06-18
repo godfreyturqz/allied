@@ -2,14 +2,7 @@ import React from 'react'
 import DeleteIcon from '../../icons/DeleteIcon'
 import ButtonIcon from '../ButtonIcon'
 import { Table as StyledTable, TableRow } from './TableStyles'
-// import { useReqIndex } from '../../hooks/useReqIndex'
 
-
-interface TableProps {
-    theadData: Array<string | React.ReactNode>
-    tbodyData: Data[]
-    deleteReqIndex: (id: string) => void
-}
 
 type Data = {
     id: string
@@ -17,14 +10,17 @@ type Data = {
     description: string
 }
 
+type TableProps = {
+    theadData: string[] | React.ReactNode[]
+    tbodyData: Data[]
+    deleteReqIndex: (id: string) => void
+}
+
 const Table: React.FC<TableProps> = ({
     theadData,
     tbodyData,
     deleteReqIndex
 }) => {
-
-    // const { deleteReqIndex } = useReqIndex()
-    
 
     return (
         <StyledTable>

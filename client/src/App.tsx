@@ -6,7 +6,7 @@ import { QueryClient, QueryClientProvider  } from 'react-query'
 import * as ROUTE from './lib/routeConstant'
 import Backdrop from './components/Backdrop'
 const ReqIndex = lazy(() => import('./pages/ReqIndex'))
-const ReqIndexNew = lazy(() => import('./pages/ReqIndexNew'))
+
 
 const App: React.FC = () => {
 
@@ -19,7 +19,6 @@ const App: React.FC = () => {
         <BrowserRouter>
           <Switch>
             <Route path={ROUTE.REQ_INDEX} component={ReqIndex} exact/>
-            <Route path={ROUTE.REQ_INDEX_NEW} component={ReqIndexNew} exact/>
           </Switch>
         </BrowserRouter>
       </Suspense>

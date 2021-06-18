@@ -1,15 +1,6 @@
-import React, { useState } from 'react'
+import { useState, ChangeEvent, FormEvent, MouseEvent } from 'react'
 // import { ApiRequest } from "../utils/ApiRequest"
 // import { LocalStorage } from '../utils/LocalStorage'
-
-
-type CustomHooksProps = () => {
-    fetchedData: Data[]
-    setFetchedData: React.Dispatch<React.SetStateAction<Data[]>>
-    // getReqIndex: () => void
-    addReqIndex: (formData: ReqIndexForm) => void
-    deleteReqIndex: (id: string) => void
-}
 
 // type ResponseData = {
 //     _id: string
@@ -28,9 +19,31 @@ interface ReqIndexForm {
     description: string
 }
 
-export const useReqIndex: CustomHooksProps = () => {
+const initialState = {
+    reqLine: '',
+    description: ''
+}
+
+export const useReqIndex = () => {
 
     const [fetchedData, setFetchedData] = useState<Data[]>([])
+    const [page, setPage] = useState('reqIndexPage')
+    const [formData, setFormData] = useState<ReqIndexForm>(initialState)
+
+    const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        setFormData(prev => ({
+            ...prev,
+            [e.target.name]: e.target.value
+        }))
+    }
+
+    const handleFormSubmit = (e: FormEvent<HTMLFormElement> | MouseEvent<HTMLButtonElement>, formData: ReqIndexForm) => {
+        e.preventDefault()
+        if(!formData.reqLine || !formData.description) return console.log('Fill up the required fields.')
+    
+        addReqIndex(formData)
+        setFormData(initialState)
+    }
 
     // const getReqIndex = async () => {
 
@@ -115,24 +128,32 @@ export const useReqIndex: CustomHooksProps = () => {
     // }
 
     const addReqIndex = (formData: ReqIndexForm) => {
-        // setFetchedData(prev => [...prev])
-        console.log(formData)
-        console.log(fetchedData)
-    }
 
+        const newReqIndex = {
+            id: Date.now().toString(),
+            ...formData
+        }
+
+        setFetchedData(prev => [...prev, {...newReqIndex}])
+        setFormData(initialState)
+        setPage('reqIndexPage')
+    }
 
     const deleteReqIndex = (id: string) => {
 
         const filteredData = fetchedData.filter(value => value.id !== id)
         setFetchedData(() => [...filteredData])
-
     }
 
     return {
         fetchedData,
         setFetchedData,
-        // getReqIndex,
-        addReqIndex,
-        deleteReqIndex
+        deleteReqIndex,
+        page,
+        setPage,
+        formData,
+        setFormData,
+        handleInputChange,
+        handleFormSubmit
     }
 }

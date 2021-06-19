@@ -12,6 +12,11 @@ type Data = {
     description: string
 }
 
+type ReqIndexForm = {
+    reqLine: string
+    description: string
+}
+
 export const getReqIndex = async () => {
     
     const { data } = await new ApiRequest('GET').reqIndex()
@@ -23,6 +28,32 @@ export const getReqIndex = async () => {
             description: res.description
         }
     })
+
+    return filteredData
+}
+
+export const postReqIndex = async (formData: ReqIndexForm) => {
+    
+    const { data } = await new ApiRequest('POST', '', formData).reqIndex()
+
+    const filteredData: Data  = {
+        id: data._id,
+        reqLine: data.reqLine,
+        description: data.description
+    }
+
+    return filteredData
+}
+
+export const deleteReqIndex = async (id: string) => {
+    
+    const { data } = await new ApiRequest('DELETE', id).reqIndex()
+
+    const filteredData: Data  = {
+        id: data._id,
+        reqLine: data.reqLine,
+        description: data.description
+    }
 
     return filteredData
 }

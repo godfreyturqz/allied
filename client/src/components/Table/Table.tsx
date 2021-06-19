@@ -13,13 +13,13 @@ type Data = {
 type TableProps = {
     theadData: string[] | React.ReactNode[]
     tbodyData: Data[]
-    deleteReqIndex: (id: string) => void
+    removeReqIndex: (id: string) => void
 }
 
 const Table: React.FC<TableProps> = ({
     theadData,
     tbodyData,
-    deleteReqIndex
+    removeReqIndex
 }) => {
 
     return (
@@ -39,7 +39,7 @@ const Table: React.FC<TableProps> = ({
                                 Object.entries(obj).map(([key, value]) => <td>{key === 'id' ? '' : value}</td>)
                             }
                             <td>
-                                <ButtonIcon onClick={() => deleteReqIndex(obj.id)}>
+                                <ButtonIcon onClick={() => removeReqIndex(obj.id)}>
                                     <DeleteIcon/>
                                 </ButtonIcon>
                             </td>

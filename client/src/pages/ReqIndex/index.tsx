@@ -17,7 +17,7 @@ const ReqIndex: React.FC = () => {
     const {
         fetchedData,
         setFetchedData,
-        deleteReqIndex,
+        removeReqIndex,
         page,
         setPage,
         formData,
@@ -39,6 +39,7 @@ const ReqIndex: React.FC = () => {
 
     }, [data, setFetchedData])
 
+
     return (
         <>
             <Banner size='medium'>
@@ -56,7 +57,7 @@ const ReqIndex: React.FC = () => {
                     <Table 
                         theadData={theadData}
                         tbodyData={tbodyData}
-                        deleteReqIndex={deleteReqIndex}
+                        removeReqIndex={removeReqIndex}
                     />
                 </TableContainer>
             }

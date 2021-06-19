@@ -1,16 +1,16 @@
 const router = require('express').Router()
 // controllers
-const reqIndexController = require('../controllers/reqIndexController')
+const ProjectIndexController = require('../controllers/ProjectIndexController')
 
 // routes
 router.route('/req-index')
-    .get(reqIndexController.getAll)
-    .post(reqIndexController.create)
+    .get(ProjectIndexController.getAll)
+    .post(ProjectIndexController.create)
 
 router.route('/req-index/:id')
-    .get(reqIndexController.getDetails)
-    .put(reqIndexController.update)
-    .delete(reqIndexController.delete)
+    .get(ProjectIndexController.getDetails)
+    .put(ProjectIndexController.update)
+    .delete(ProjectIndexController.delete)
 
 
 module.exports = router

@@ -1,13 +1,7 @@
 import { ApiRequest } from "../utils/ApiRequest"
 
-type ResponseData = {
-    _id: string
-    reqLine: string
-    description: string
-}
-
 type Data = {
-    id: string
+    uniqid: string
     reqLine: string
     description: string
 }
@@ -21,9 +15,9 @@ export const getReqIndex = async () => {
     
     const { data } = await new ApiRequest('GET').reqIndex()
 
-    const filteredData: Data[]  = data.map((res: ResponseData)  => {
+    const filteredData: Data[]  = data.map((res: Data)  => {
         return {
-            id: res._id,
+            uniqid: res.uniqid,
             reqLine: res.reqLine,
             description: res.description
         }
@@ -37,7 +31,7 @@ export const postReqIndex = async (formData: ReqIndexForm) => {
     const { data } = await new ApiRequest('POST', '', formData).reqIndex()
 
     const filteredData: Data  = {
-        id: data._id,
+        uniqid: data.uniqid,
         reqLine: data.reqLine,
         description: data.description
     }
@@ -50,7 +44,7 @@ export const deleteReqIndex = async (id: string) => {
     const { data } = await new ApiRequest('DELETE', id).reqIndex()
 
     const filteredData: Data  = {
-        id: data._id,
+        uniqid: data.uniqid,
         reqLine: data.reqLine,
         description: data.description
     }

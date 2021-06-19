@@ -3,11 +3,6 @@ import axios, { AxiosRequestConfig, Method } from 'axios'
 // for dev
 const isProductionServer = true
 
-// type APIResponse = {
-//     data: object[]
-//     map: (obj: object) => object[]
-// }
-
 export class ApiRequest {
 
     API_BASE_URL: string

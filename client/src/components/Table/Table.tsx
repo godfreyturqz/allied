@@ -5,7 +5,7 @@ import { Table as StyledTable, TableRow } from './TableStyles'
 
 
 type Data = {
-    id: string
+    uniqid: string
     reqLine: string
     description: string
 }
@@ -36,10 +36,10 @@ const Table: React.FC<TableProps> = ({
                     tbodyData && tbodyData.map(obj => 
                         <TableRow>
                             {
-                                Object.entries(obj).map(([key, value]) => <td>{key === 'id' ? '' : value}</td>)
+                                Object.entries(obj).map(([key, value]) => <td>{key === 'uniqid' ? '' : value}</td>)
                             }
                             <td>
-                                <ButtonIcon onClick={() => removeReqIndex(obj.id)}>
+                                <ButtonIcon onClick={() => removeReqIndex(obj.uniqid)}>
                                     <DeleteIcon/>
                                 </ButtonIcon>
                             </td>

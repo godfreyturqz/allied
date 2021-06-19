@@ -1,1 +1,1 @@
-export const REQ_INDEX = '/'
+export const PROJECT_INDEX = '/'

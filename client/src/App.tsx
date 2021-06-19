@@ -9,7 +9,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import * as ROUTE from './lib/routeConstant'
 // COMPONENTS
 import Backdrop from './components/Backdrop'
-const ReqIndex = lazy(() => import('./pages/ReqIndex'))
+const ProjectIndex = lazy(() => import('./pages/ProjectIndex/ProjectIndex'))
 
 
 const App: React.FC = () => {
@@ -21,7 +21,7 @@ const App: React.FC = () => {
         <Suspense fallback={<Backdrop open={true}/>}>
           <BrowserRouter>
             <Switch>
-              <Route path={ROUTE.REQ_INDEX} component={ReqIndex} exact/>
+              <Route path={ROUTE.PROJECT_INDEX} component={ProjectIndex} exact/>
             </Switch>
           </BrowserRouter>
         </Suspense>

@@ -1,32 +1,32 @@
 import React, { useEffect } from 'react'
-import Banner from '../../components/Banner'
+// CONTAINER
 import { TableContainer } from '../../components/Table/TableStyles'
+// COMPONENTS
+import Banner from '../../components/Banner'
 import Table from '../../components/Table/Table'
 import Button from '../../components/Button'
-// COMPONENTS
-import ReqIndexForm from './ReqIndexForm'
-// FETCHING
-import { useQuery } from 'react-query'
-import { getReqIndex } from '../../services/ReqIndexService'
-// STATE
+// PAGE
+import ProjectIndexForm from './ProjectIndexForm'
+// CONSTANTS
+import { MAIN, FORM } from './pageConstants'
+// CUSTOM HOOK
 import { useReqIndex } from './useReqIndex'
 
 
 const ReqIndex: React.FC = () => {
 
     const {
+        data,
         fetchedData,
         setFetchedData,
         removeReqIndex,
-        page,
-        setPage,
+        currentComponent,
+        setCurrentComponent,
         formData,
         setFormData,
         handleInputChange,
         handleFormSubmit
     } = useReqIndex()
-
-    const { data } = useQuery('reqIndex', getReqIndex)
 
     // configure to change table header
     const theadData = ['', 'Request - Line', 'Description, Tags', '']
@@ -34,7 +34,7 @@ const ReqIndex: React.FC = () => {
 
     
     useEffect(() => {
-        
+        console.log(data)
         setFetchedData(prev => [...prev, ...(typeof data === 'object' ? data : [])])
 
     }, [data, setFetchedData])
@@ -44,15 +44,15 @@ const ReqIndex: React.FC = () => {
         <>
             <Banner size='medium'>
                 <p>Request Index</p>
-                <Button onClick={() => setPage('formPage')} secondary>
+                <Button secondary onClick={() => setCurrentComponent(prev => prev === MAIN ? FORM : MAIN)} >
                     { 
-                        page === 'reqIndexPage' ? 'Add' :
-                        page === 'formPage' ? 'Back' : ''
+                        currentComponent === MAIN ? 'Add' :
+                        currentComponent === FORM ? 'Back' : ''
                     }
                 </Button>
             </Banner>
             {
-                page === 'reqIndexPage' &&
+                currentComponent === MAIN &&
                 <TableContainer>
                     <Table 
                         theadData={theadData}
@@ -63,14 +63,13 @@ const ReqIndex: React.FC = () => {
             }
 
             {
-                page === 'formPage' &&
-                <ReqIndexForm
+                currentComponent === FORM &&
+                <ProjectIndexForm
                     formData={formData}
                     setFormData={setFormData}
                     handleInputChange={handleInputChange}
                     handleFormSubmit={handleFormSubmit}
-                    page={page}
-                    setPage={setPage}
+                    setCurrentComponent={setCurrentComponent}
                 />
             }
         </>

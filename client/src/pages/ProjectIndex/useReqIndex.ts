@@ -1,24 +1,15 @@
-import { useState, ChangeEvent, FormEvent, MouseEvent } from 'react'
+import { useState } from 'react'
+import { useQuery } from 'react-query'
+import uniqid from 'uniqid'
+// SERVICES
+import { getReqIndex } from '../../services/ReqIndexService'
 import { postReqIndex, deleteReqIndex } from '../../services/ReqIndexService'
-// import { ApiRequest } from "../utils/ApiRequest"
-// import { LocalStorage } from '../utils/LocalStorage'
+// CONSTANTS
+import { MAIN } from './pageConstants'
+//TYPES
+import { InputChangeEvent, SubmitFormEvent } from '../../types'
+import { Data, ReqIndexForm } from './types'
 
-// type ResponseData = {
-//     _id: string
-//     reqLine: string
-//     description: string
-// }
-
-type Data = {
-    id: string
-    reqLine: string
-    description: string
-}
-
-interface ReqIndexForm {
-    reqLine: string
-    description: string
-}
 
 const initialState = {
     reqLine: '',
@@ -28,10 +19,12 @@ const initialState = {
 export const useReqIndex = () => {
 
     const [fetchedData, setFetchedData] = useState<Data[]>([])
-    const [page, setPage] = useState('reqIndexPage')
+    const [currentComponent, setCurrentComponent] = useState(MAIN)
     const [formData, setFormData] = useState<ReqIndexForm>(initialState)
 
-    const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { data } = useQuery('reqIndex', getReqIndex)
+
+    const handleInputChange = (e: InputChangeEvent) => {
         setFormData(prev => ({
             ...prev,
             [e.target.name]: e.target.value
@@ -39,7 +32,7 @@ export const useReqIndex = () => {
     }
 
     const handleFormSubmit = (
-        e: FormEvent<HTMLFormElement> | MouseEvent<HTMLButtonElement>,
+        e: SubmitFormEvent,
         formData: ReqIndexForm
     ) => {
 
@@ -51,17 +44,19 @@ export const useReqIndex = () => {
     }
 
     const addReqIndex = (formData: ReqIndexForm) => {
+
         try {
-            postReqIndex(formData)
 
             const newReqIndex = {
-                id: Date.now().toString(),
+                uniqid: uniqid(),
                 ...formData
             }
+
+            postReqIndex(newReqIndex)
     
             setFetchedData(prev => [...prev, {...newReqIndex}])
             setFormData(initialState)
-            setPage('reqIndexPage')
+            setCurrentComponent(MAIN)
 
         } catch (error) {
             console.log(error)
@@ -69,9 +64,10 @@ export const useReqIndex = () => {
     }
 
     const removeReqIndex = (id: string) => {
+        console.log(id)
         try {
             deleteReqIndex(id)
-            const filteredData = fetchedData.filter(value => value.id !== id)
+            const filteredData = fetchedData.filter(value => value.uniqid !== id)
             setFetchedData(() => [...filteredData])
 
         } catch (error) {
@@ -80,11 +76,12 @@ export const useReqIndex = () => {
     }
 
     return {
+        data,
         fetchedData,
         setFetchedData,
         removeReqIndex,
-        page,
-        setPage,
+        currentComponent,
+        setCurrentComponent,
         formData,
         setFormData,
         handleInputChange,

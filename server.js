@@ -28,5 +28,5 @@ mongoose.connect(process.env.DB_CONNECTION, {
 //--------------------------------------------------------------
 app.use('/api/v1', require('./routes/api'))
 app.use('/', (req, res) => {
-    res.send('allied API ver 1.0')
+    res.send('Allied API ver 1.0')
 })

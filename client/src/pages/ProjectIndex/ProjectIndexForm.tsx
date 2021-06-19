@@ -1,21 +1,18 @@
-import React, { ChangeEvent, FormEvent, MouseEvent } from 'react'
+import React from 'react'
 import Input from '../../components/Input'
 import Button from '../../components/Button'
 import { FormContainer } from '../../components/Form/FormStyles'
+import { MAIN } from './pageConstants'
+import { InputChangeEvent, SubmitFormEvent } from '../../types'
+import { ReqIndexForm } from './types'
 
 
 interface ReqIndexNewProps {
     formData: ReqIndexForm
     setFormData: React.Dispatch<React.SetStateAction<ReqIndexForm>>
-    handleInputChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
-    handleFormSubmit: (e: FormEvent<HTMLFormElement> | MouseEvent<HTMLButtonElement>, formData: ReqIndexForm) => void
-    page: string
-    setPage: React.Dispatch<React.SetStateAction<string>>
-}
-
-interface ReqIndexForm {
-    reqLine: string
-    description: string
+    handleInputChange: (e: InputChangeEvent) => void
+    handleFormSubmit: (e: SubmitFormEvent, formData: ReqIndexForm) => void
+    setCurrentComponent: React.Dispatch<React.SetStateAction<string>>
 }
 
 const ReqIndexNew: React.FC<ReqIndexNewProps> = ({
@@ -23,18 +20,17 @@ const ReqIndexNew: React.FC<ReqIndexNewProps> = ({
     setFormData,
     handleInputChange,
     handleFormSubmit,
-    setPage
+    setCurrentComponent
 }) => {
 
-    const back = (e: FormEvent<HTMLFormElement> | MouseEvent<HTMLButtonElement>) => {
+    const back = (e: SubmitFormEvent) => {
         e.preventDefault()
-        setPage('reqIndexPage')
+        setCurrentComponent(MAIN)
         setFormData({
             reqLine: '',
             description: ''
         })
     }
-
 
     return (
         <FormContainer>

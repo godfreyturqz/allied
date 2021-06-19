@@ -54,7 +54,7 @@ export const useReqIndex = () => {
 
             postReqIndex(newReqIndex)
     
-            setFetchedData(prev => [...prev, {...newReqIndex}])
+            setFetchedData(prev => [{...newReqIndex}, ...prev])
             setFormData(initialState)
             setCurrentComponent(MAIN)
 

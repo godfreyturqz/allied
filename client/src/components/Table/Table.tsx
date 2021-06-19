@@ -27,7 +27,7 @@ const Table: React.FC<TableProps> = ({
             <thead>
                 <TableRow>
                     {
-                        theadData && theadData.map(tableHead => <th>{tableHead}</th>)
+                        tbodyData && theadData && theadData.map(tableHead => <th>{tableHead}</th>)
                     }
                 </TableRow>
             </thead>

@@ -13,7 +13,7 @@ import { MAIN, FORM } from './pageConstants'
 import { useReqIndex } from './useReqIndex'
 
 
-const ReqIndex: React.FC = () => {
+const ProjectIndex: React.FC = () => {
 
     const {
         data,
@@ -34,7 +34,7 @@ const ReqIndex: React.FC = () => {
 
     
     useEffect(() => {
-        console.log(data)
+
         setFetchedData(prev => [...prev, ...(typeof data === 'object' ? data : [])])
 
     }, [data, setFetchedData])
@@ -43,7 +43,7 @@ const ReqIndex: React.FC = () => {
     return (
         <>
             <Banner size='medium'>
-                <p>Request Index</p>
+                <p>Project Index</p>
                 <Button secondary onClick={() => setCurrentComponent(prev => prev === MAIN ? FORM : MAIN)} >
                     { 
                         currentComponent === MAIN ? 'Add' :
@@ -76,4 +76,4 @@ const ReqIndex: React.FC = () => {
     )
 }
 
-export default ReqIndex
+export default ProjectIndex

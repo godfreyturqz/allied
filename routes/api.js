@@ -3,11 +3,11 @@ const router = require('express').Router()
 const ProjectIndexController = require('../controllers/ProjectIndexController')
 
 // routes
-router.route('/req-index')
+router.route('/projectIndex')
     .get(ProjectIndexController.getAll)
     .post(ProjectIndexController.create)
 
-router.route('/req-index/:id')
+router.route('/projectIndex/:id')
     .get(ProjectIndexController.getDetails)
     .put(ProjectIndexController.update)
     .delete(ProjectIndexController.delete)
